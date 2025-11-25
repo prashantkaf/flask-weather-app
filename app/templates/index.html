@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %}
+<div class="glass-card">
+  <form method="post" class="search-form" autocomplete="off">
+    <label for="city">Enter city</label>
+    <div class="input-row">
+      <input
+        type="text"
+        name="city"
+        id="city"
+        placeholder="e.g. London, Tokyo"
+        value="{{ city or '' }}"
+      />
+      <button type="submit">Search</button>
+    </div>
+  </form>
+
+  {% if weather %}
+  <div class="weather-result">
+    <div class="location">{{ weather.city }}, {{ weather.country }}</div>
+    <div class="temp">{{ weather.temp }}°</div>
+    <div class="desc">
+      <img
+        src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png"
+        alt="{{ weather.description }}"
+      />
+      <span>{{ weather.description }}</span>
+    </div>
+    <div class="meta">Humidity: {{ weather.humidity }}%</div>
+  </div>
+  {% elif error %}
+  <div class="error">Error: {{ error }}</div>
+  {% else %}
+  <div class="hint">Search for a city's current weather.</div>
+  {% endif %}
+</div>
+{% endblock %}
