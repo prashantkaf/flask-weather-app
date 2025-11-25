@@ -2,9 +2,9 @@
 # remote_deploy.sh - run on the server to update and restart app
 set -e
 
-# ensure python3.12-venv is installed
+# ensure python3-venv is installed
 sudo apt update -y
-sudo apt install -y python3.12-venv
+sudo apt install -y python3-venv
 
 APP_DIR="$1" # e.g. /home/azureuser/flask-weather-app
 VENV_DIR="$APP_DIR/venv"
